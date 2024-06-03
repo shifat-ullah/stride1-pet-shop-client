@@ -1,7 +1,20 @@
-import pets from "../../data/data";
+import { useEffect, useState } from "react";
+// import pets from "../../data/data";
 import ShowFeature from "./ShowFeature";
 
 const Feature = () => {
+
+    const [pets, setPets]=useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/pets')
+        .then(res=>res.json())
+        .then(data=>{
+            setPets(data)
+        })
+    },[])
+
+    console.log(pets)
     return (
         <div className=" mt-20 mb-16 lg:w-[1200px] mx-auto ">
             <h1 className="text-4xl mb-3 mx-auto font-bold w-[450px] italic rounded text-center">------Our Features-----</h1>

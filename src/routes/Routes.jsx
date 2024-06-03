@@ -9,6 +9,8 @@ import Login from "../pages/LogIn";
 import SignUp from "../pages/SignUp";
 import DashboardLayout from './../layout/DashboardLayout';
 import DashboardHome from "../components/dashboard/DashboardHome";
+import AddFeature from "../components/dashboard/AddFeature";
+import ManageAllfeature from "../components/dashboard/ManageAllfeature";
 
   export const router = createBrowserRouter([
     {
@@ -43,14 +45,15 @@ import DashboardHome from "../components/dashboard/DashboardHome";
             index: true,
             element: <DashboardHome/>,
           },
-        //   {
-        //     path: "manage-recipes",
-        //     element: <ManageAllRecipe />,
-        //   },
-        //   {
-        //     path: "add-recipe",
-        //     element: <AddRecipe />,
-        //   },
+          {
+            path: "manageFeature",
+            element: <ManageAllfeature />,
+            loader: ()=>fetch('http://localhost:5000/pets'),
+          },
+          {
+            path: "addFeature",
+            element: <AddFeature />,
+          },
         //   {
         //     path: "edit-recipe/:id",
         //     element: <EditRecipe />,
