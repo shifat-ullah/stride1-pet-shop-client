@@ -1,10 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useContext, useState } from 'react';
+import { FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../assets/pet shop/logo.png';
-import { useState } from 'react';
-import './styles.css'
+import './styles.css';
+import { AuthContext } from "../../../provider/AuthProviders";
 
 const Navbar = () => {
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+
+    console.log(user)
+
+    const handleSignOut = () => {
+        logOut()
+            .than(result => {
+                console.log(result)
+            })
+            .than(err => {
+                console.log(err.massage)
+            })
+    }
+
+    
 
     return (
         <div className="bg-base-100 shadow-md">
@@ -12,9 +29,11 @@ const Navbar = () => {
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
                         </div>
-                        <ul tabIndex={0} className="menu  menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><NavLink to="/" activeClassName="active-link">Home</NavLink></li>
                             <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
                             <li><NavLink to="/services" activeClassName="active-link">Services</NavLink></li>
@@ -33,26 +52,32 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end flex gap-3 items-center">
-                    <NavLink to='/dashboard' className="text-xl btn btn-sm btn-outline btn-primary transition-transform transform hover:scale-110">Dashboard</NavLink>
+                    {user ? (
+                        <>
+                            <NavLink to='/dashboard' className="text-xl btn btn-sm btn-outline btn-primary transition-transform transform hover:scale-110">Dashboard</NavLink>
+                            <Link onClick={handleSignOut} className="text-xl btn btn-sm btn-outline btn-danger transition-transform transform hover:scale-110">Logout</Link>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink to='/login' className="text-xl btn btn-sm btn-outline btn-success flex items-center gap-2 transition-transform transform hover:scale-110">
+                                <FaSignInAlt className="text-lg" /> Login
+                            </NavLink>
+
+                        </>
+                    )}
                     <div className="relative">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}>
                             <div className="w-10 rounded-full transition-transform transform hover:scale-110">
-                                <img alt="Profile" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                {
+                                    user ? <img src={user.photoURL} alt="" /> : <img alt="Profile" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                }
+
                             </div>
                         </div>
                         {isProfileMenuOpen && (
                             <ul className="absolute right-0 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 animate-fade-in-down">
                                 <li className="bg-slate-100 p-2">
                                     <NavLink to='/profile' activeClassName="text-blue-600">Profile</NavLink>
-                                </li>
-                                <li className="bg-slate-100 p-2">
-                                    <NavLink to='/login'>Log In</NavLink>
-                                </li>
-                                <li className="bg-slate-100 p-2">
-                                    <NavLink to='/register'>Register</NavLink>
-                                </li>
-                                <li className="bg-slate-100 p-2">
-                                    <NavLink to='/logout'>Logout</NavLink>
                                 </li>
                             </ul>
                         )}

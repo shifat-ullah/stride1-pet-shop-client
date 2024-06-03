@@ -1,8 +1,9 @@
+import Benner from "../benner/Benner";
 
 const Home = () => {
     return (
         <div>
-            sddsssd
+           <Benner></Benner>
         </div>
     );
 };
