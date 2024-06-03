@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 
 
 const AddFeature = () => {
@@ -18,7 +19,7 @@ const AddFeature = () => {
             image,
             description
         };
-        console.log(formData)
+       
 
         fetch('http://localhost:5000/pets',{
             method:'POST',
@@ -29,7 +30,7 @@ const AddFeature = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            
+            toast.success('Feature added successfully')
             console.log(data)
         })
       };
