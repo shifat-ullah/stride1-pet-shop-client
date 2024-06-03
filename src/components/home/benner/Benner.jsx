@@ -21,12 +21,12 @@ const Benner = () => {
 // };
 
 return (
-    <div className="relative flex items-center justify-center   bg-gray-100">
+    <div className="relative flex items-center justify-center   bg-gray-50">
       <div className="relative w-full max-h-screen">
         <img  src={banner} alt="Pet Shop" className="w-full max-h-screen object-cover" />
-        <div className="absolute inset-0 flex flex-col justify-center items-start p-10 bg-black bg-opacity-50">
-          <h1 className="text-4xl font-bold text-white mb-4">WELCOME TO OUR PET SHOP</h1>
-          <p className="text-white mb-6">
+        <div className="absolute inset-0 lg:pl-14 flex flex-col justify-center items-start p-10 bg-opacity-50">
+          <h1 className="text-4xl font-bold text-black mb-4">WELCOME TO OUR PET SHOP</h1>
+          <p className=" text-gray-700 text-justify lg:w-[500px] mb-6">
             It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
             The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
           </p>
