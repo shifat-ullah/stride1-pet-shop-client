@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { useContext, useRef } from 'react'
 import { AuthContext } from '../provider/AuthProviders'
 import toast from 'react-hot-toast'
+import { savedData } from '../components/api/auth'
 
 const Login = () => {
 
@@ -23,7 +24,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result)
+                savedData(result.user)
                 navigate(from, {replace:true})
             })
             .catch(err => {
@@ -38,7 +39,7 @@ const Login = () => {
         const password = event.target.password.value
         signIn(email, password)
           .then(result => {
-            // savedUser(result.user)
+            savedData(result.user)
             toast.success('LogIn successful')
             console.log(result.user)
             navigate(from, { replace: true })

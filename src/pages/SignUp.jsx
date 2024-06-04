@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProviders'
 import toast from 'react-hot-toast'
+import { savedData } from '../components/api/auth'
 
 
 const SignUp = () => {
@@ -23,6 +24,7 @@ const from = location?.state?.from.pathname || '/'
     const handleGoogleLogin=()=>{
         signInWithGoogle()
         .then(result=>{
+            savedData(result.user)
             console.log(result)
         })
         .catch(err=>{
@@ -31,7 +33,7 @@ const from = location?.state?.from.pathname || '/'
     }
 
 
-    // 
+   
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -57,7 +59,7 @@ const from = location?.state?.from.pathname || '/'
                     .then(result => {
                         updateUserProfile(name, imageUrl)
                             .then(() => {
-                               
+                               savedData(result.user)
                                 toast.success('Signup successful')
 
                                 navigate(from, { replace: true })

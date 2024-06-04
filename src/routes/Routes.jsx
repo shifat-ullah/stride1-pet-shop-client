@@ -11,6 +11,9 @@ import DashboardLayout from './../layout/DashboardLayout';
 import DashboardHome from "../components/dashboard/DashboardHome";
 import AddFeature from "../components/dashboard/AddFeature";
 import ManageAllfeature from "../components/dashboard/ManageAllfeature";
+import EditFeatures from "../components/dashboard/EditFeatures";
+import Profile from "../components/dashboard/Profile";
+import UpdateProfile from "../components/dashboard/UpdateProfile";
 
   export const router = createBrowserRouter([
     {
@@ -29,6 +32,15 @@ import ManageAllfeature from "../components/dashboard/ManageAllfeature";
         {
           path: "/register",
           element: <SignUp />,
+        },
+        {
+          path: "/Profile",
+          element: <Profile />,
+        },
+        {
+          path: "/updateProfile/:id",
+          element: <UpdateProfile />,
+          loader:({params})=>fetch(`http://localhost:5000/user/update/${params.id}`)
         },
       ],
     },
@@ -54,10 +66,12 @@ import ManageAllfeature from "../components/dashboard/ManageAllfeature";
             path: "addFeature",
             element: <AddFeature />,
           },
-        //   {
-        //     path: "edit-recipe/:id",
-        //     element: <EditRecipe />,
-        //   },
+          
+          {
+            path: "editFeatures/:id",
+            element: <EditFeatures/>,
+            loader:({params})=>fetch(`http://localhost:5000/pets/${params.id}`)
+          },
         //   {
         //     path: "updateUser/:id",
         //     element: <EditProfile />,
