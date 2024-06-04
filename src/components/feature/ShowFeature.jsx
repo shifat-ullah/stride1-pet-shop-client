@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const ShowFeature = ({pet}) => {
-    const {image, title, category, description, price}=pet;
+    const {image, title, category, description,_id, price}=pet;
     return (
         <div>
             <div className="card w-full max-w-sm bg-base-100 shadow-xl transform transition duration-500 hover:scale-105">
@@ -17,7 +17,7 @@ const ShowFeature = ({pet}) => {
                     <p className="text-gray-700">{description}</p>
                     <div className="card-actions justify-between mt-4">
                         <span className="text-xl font-bold text-gray-900">${price}</span>
-                       <Link ><button  className="btn btn-primary">See Details</button></Link>
+                       <Link to={`/details/${_id}`}><button className="btn btn-primary">See Details</button></Link>
                     </div>
                 </div>
             </div>

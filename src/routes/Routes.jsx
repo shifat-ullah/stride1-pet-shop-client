@@ -15,6 +15,10 @@ import EditFeatures from "../components/dashboard/EditFeatures";
 import Profile from "../components/dashboard/Profile";
 import UpdateProfile from "../components/dashboard/UpdateProfile";
 import PrivateRoute from "./PrivateRoute";
+import PetDetails from "../components/feature/PetDetails";
+import About from "../components/home/about/About";
+import Feature from "../components/feature/Feature";
+import Contact from "../components/home/contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -35,8 +39,25 @@ export const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/feature",
+        element: <Feature />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
         path: "/Profile",
         element:<PrivateRoute> <Profile /></PrivateRoute>,
+      },
+      {
+        path: "/details/:id",
+        element:<PrivateRoute> <PetDetails></PetDetails></PrivateRoute>,
+        loader: ({params})=>fetch(`http://localhost:5000/pets/details/${params.id}`)
       },
       {
         path: "/updateProfile/:id",

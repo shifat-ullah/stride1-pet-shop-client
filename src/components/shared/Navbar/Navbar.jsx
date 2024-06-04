@@ -36,7 +36,8 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><NavLink to="/" activeClassName="active-link">Home</NavLink></li>
                             <li><NavLink to="/about" activeClassName="active-link">About</NavLink></li>
-                            <li><NavLink to="/services" activeClassName="active-link">Services</NavLink></li>
+                            <li><NavLink to="/feature" activeClassName="active-link">Features</NavLink></li>
+                            <li><NavLink to="/Contact" activeClassName="active-link" className="nav-link">Contact</NavLink></li>
                         </ul>
                     </div>
                     <NavLink to="/" className="flex items-center gap-3 text-2xl font-bold">
@@ -48,7 +49,8 @@ const Navbar = () => {
                     <ul className="menu text-xl menu-horizontal px-1">
                         <li><NavLink exact to="/" activeClassName="active-link" className="nav-link">Home</NavLink></li>
                         <li><NavLink to="/about" activeClassName="active-link" className="nav-link">About</NavLink></li>
-                        <li><NavLink to="/services" activeClassName="active-link" className="nav-link">Services</NavLink></li>
+                        <li><NavLink to="/feature" activeClassName="active-link" className="nav-link">Feature</NavLink></li>
+                        <li><NavLink to="/Contact" activeClassName="active-link" className="nav-link">Contact</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end flex gap-3 items-center">
