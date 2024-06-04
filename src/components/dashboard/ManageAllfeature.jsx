@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaSearch, FaTrash } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,9 @@ const ManageAllfeature = () => {
 
   const loadedData = useLoaderData();
   const [pets, setPets] = useState(loadedData)
+  const [searchText, setSearchText] = useState(""); 
+
+
 
   console.log(loadedData)
   const handleDelete = (id) => {
@@ -49,9 +52,42 @@ const ManageAllfeature = () => {
     console.log({ id })
 
   }
+
+
+  // search
+
+  const handleSearch=()=>{
+    fetch(`http://localhost:5000/pets/${searchText}`)
+    .then(res=> res.json())
+    .then(data=>{
+      setPets(data)
+    })
+  }
+
   return (
     <div className="overflow-x-auto">
-      <h1>pet length : {pets.length}</h1>
+      <h1 className="text-4xl mb-3 mx-auto font-bold w-[600px] italic rounded text-center">------Manage all Features-----</h1>
+
+      {/* search option */}
+
+      <div className="flex items-center justify-center mt-10 mb-9 bg-gray-100">
+      <div className="flex items-center space-x-2">
+        <input
+          type="text"
+          onChange={(e)=> setSearchText(e.target.value)}
+          placeholder="Search..."
+          className="pl-4 pr-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button onClick={handleSearch} className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-r-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none flex items-center space-x-2">
+          <FaSearch />
+          <span>Search</span>
+        </button>
+      </div>
+    </div>
+
+
+
+
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr className="bg-blue-500 text-white">
