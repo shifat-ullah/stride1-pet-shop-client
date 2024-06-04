@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 
 const ManageAllfeature = () => {
 
+  const token = localStorage.getItem("token")
+
   const loadedData = useLoaderData();
   const [pets, setPets] = useState(loadedData)
   const [searchText, setSearchText] = useState(""); 
@@ -31,7 +33,12 @@ const ManageAllfeature = () => {
         });
 
         fetch(`http://localhost:5000/pets/${id}`, {
-          method: "DELETE"
+          method: "DELETE",
+          headers:{
+            'content-type':'application/json',
+            authorization:`Bearer ${token}`
+
+        },
         })
           .then(res => res.json())
           .then(data => {

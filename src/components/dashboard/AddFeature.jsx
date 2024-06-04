@@ -2,6 +2,8 @@ import toast from "react-hot-toast";
 
 
 const AddFeature = () => {
+
+  const token = localStorage.getItem("token")
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -24,8 +26,10 @@ const AddFeature = () => {
         fetch('http://localhost:5000/pets',{
             method:'POST',
             headers:{
-                'content-type':'application/json'
-            },
+              'content-type':'application/json',
+              authorization:`Bearer ${token}`
+  
+          },
             body:JSON.stringify(formData)
         })
         .then(res=>res.json())

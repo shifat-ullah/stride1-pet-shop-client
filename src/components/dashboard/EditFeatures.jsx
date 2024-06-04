@@ -4,6 +4,8 @@ import { useLoaderData } from "react-router-dom";
 
 
 const EditFeatures = () => {
+
+    const token = localStorage.getItem("token")
     const updatePets=useLoaderData()
     console.log(updatePets)
 
@@ -28,7 +30,9 @@ const EditFeatures = () => {
        fetch(`http://localhost:5000/pets/${updatePets._id}`, {
         method:'PATCH',
         headers:{
-            'content-type':'application/json'
+            'content-type':'application/json',
+            authorization:`Bearer ${token}`
+
         },
         body:JSON.stringify(petsData)
        })

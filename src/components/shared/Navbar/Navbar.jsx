@@ -55,7 +55,7 @@ const Navbar = () => {
                     {user ? (
                         <>
                             <NavLink to='/dashboard' className="text-xl btn btn-sm btn-outline btn-primary transition-transform transform hover:scale-110">Dashboard</NavLink>
-                            <Link onClick={handleSignOut} className="text-xl btn btn-sm btn-outline btn-danger transition-transform transform hover:scale-110">Logout</Link>
+                            <div onClick={handleSignOut} className="text-xl btn btn-sm btn-outline btn-danger transition-transform transform hover:scale-110">Logout</div>
                         </>
                     ) : (
                         <>

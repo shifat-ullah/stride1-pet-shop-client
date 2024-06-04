@@ -18,7 +18,7 @@ const Profile = () => {
     console.log(userInfo)
     return (
         <div className="flex p-10 gap-10">
-            <img className="rounded-full " src={userInfo.photo} alt="" />
+            <img className="rounded-full w-[300px] h-[300px] " src={userInfo.photo} alt="" />
             <div className=" ">
                 <h1 className="text-4xl font-bold">{userInfo.name}</h1>
                 <Link to={`/updateProfile/${userInfo._id}`}>

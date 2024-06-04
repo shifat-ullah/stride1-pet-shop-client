@@ -8,6 +8,6 @@ export const savedData=formData=>{
     })
     .then(res=> res.json())
     .then(data=>{
-        console.log(data)
+        localStorage.setItem('token', data?.token)
     })
 }

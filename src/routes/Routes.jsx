@@ -1,7 +1,7 @@
 
 import {
-    createBrowserRouter,
-  } from "react-router-dom";
+  createBrowserRouter,
+} from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import ErrorPage from "../components/shared/errorPage/ErrorPage";
 import Home from "../components/home/home/Home";
@@ -14,69 +14,70 @@ import ManageAllfeature from "../components/dashboard/ManageAllfeature";
 import EditFeatures from "../components/dashboard/EditFeatures";
 import Profile from "../components/dashboard/Profile";
 import UpdateProfile from "../components/dashboard/UpdateProfile";
+import PrivateRoute from "./PrivateRoute";
 
-  export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout/>,
-      errorElement: <ErrorPage />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path: "/register",
-          element: <SignUp />,
-        },
-        {
-          path: "/Profile",
-          element: <Profile />,
-        },
-        {
-          path: "/updateProfile/:id",
-          element: <UpdateProfile />,
-          loader:({params})=>fetch(`http://localhost:5000/user/update/${params.id}`)
-        },
-      ],
-    },
-
-    {
-        path: "/dashboard",
-        element: (
-          
-            <DashboardLayout />
-         
-        ),
-        children: [
-          {
-            index: true,
-            element: <DashboardHome/>,
-          },
-          {
-            path: "manageFeature",
-            element: <ManageAllfeature />,
-            loader: ()=>fetch('http://localhost:5000/pets'),
-          },
-          {
-            path: "addFeature",
-            element: <AddFeature />,
-          },
-          
-          {
-            path: "editFeatures/:id",
-            element: <EditFeatures/>,
-            loader:({params})=>fetch(`http://localhost:5000/pets/${params.id}`)
-          },
-        //   {
-        //     path: "updateUser/:id",
-        //     element: <EditProfile />,
-        //     loader:({params})=>fetch(`http://localhost:4000/user/edit/${params.id}`)
-        //   },
-        ],
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
       },
-  ]);
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <SignUp />,
+      },
+      {
+        path: "/Profile",
+        element:<PrivateRoute> <Profile /></PrivateRoute>,
+      },
+      {
+        path: "/updateProfile/:id",
+        element: <UpdateProfile />,
+        loader: ({ params }) => fetch(`http://localhost:5000/user/update/${params.id}`)
+      },
+    ],
+  },
+
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: "manageFeature",
+        element: <PrivateRoute><ManageAllfeature /></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/pets'),
+      },
+      {
+        path: "addFeature",
+        element: <AddFeature />,
+      },
+
+      {
+        path: "editFeatures/:id",
+        element: <PrivateRoute><EditFeatures /></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
+      },
+      //   {
+      //     path: "updateUser/:id",
+      //     element: <EditProfile />,
+      //     loader:({params})=>fetch(`http://localhost:4000/user/edit/${params.id}`)
+      //   },
+    ],
+  },
+]);

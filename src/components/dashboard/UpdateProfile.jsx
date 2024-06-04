@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 
 const UpdateProfile = () => {
-
+    const token = localStorage.getItem("token")
     const updatedUser= useLoaderData();
     console.log(updatedUser)
     const handleSubmit = e => {
@@ -24,7 +24,9 @@ const UpdateProfile = () => {
            fetch(`http://localhost:5000/user/${updatedUser.email}`,{
             method:'PATCH',
             headers:{
-                'content-type':'application/json'
+                'content-type':'application/json',
+                authorization:`Bearer ${token}`
+    
             },
             body:JSON.stringify(userUpdateInfo)
            })
