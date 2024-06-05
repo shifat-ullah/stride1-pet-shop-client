@@ -1,5 +1,5 @@
 export const savedData=formData=>{
-    fetch(`http://localhost:5000/user/${formData.email}`,{
+    fetch(`https://stride1-pet-shop-server.vercel.app/user/${formData.email}`,{
         method:"PUT",
         headers:{
             'content-type':'application/json'

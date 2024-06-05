@@ -32,7 +32,7 @@ const ManageAllfeature = () => {
           icon: "success"
         });
 
-        fetch(`http://localhost:5000/pets/${id}`, {
+        fetch(`https://stride1-pet-shop-server.vercel.app/pets/${id}`, {
           method: "DELETE",
           headers:{
             'content-type':'application/json',
@@ -64,7 +64,7 @@ const ManageAllfeature = () => {
   // search
 
   const handleSearch=()=>{
-    fetch(`http://localhost:5000/pets/${searchText}`)
+    fetch(`https://stride1-pet-shop-server.vercel.app/pets/${searchText}`)
     .then(res=> res.json())
     .then(data=>{
       setPets(data)

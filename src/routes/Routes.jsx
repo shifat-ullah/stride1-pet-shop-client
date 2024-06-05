@@ -57,12 +57,12 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         element:<PrivateRoute> <PetDetails></PetDetails></PrivateRoute>,
-        loader: ({params})=>fetch(`http://localhost:5000/pets/details/${params.id}`)
+        loader: ({params})=>fetch(`https://stride1-pet-shop-server.vercel.app/pets/details/${params.id}`)
       },
       {
         path: "/updateProfile/:id",
         element: <UpdateProfile />,
-        loader: ({ params }) => fetch(`http://localhost:5000/user/update/${params.id}`)
+        loader: ({ params }) => fetch(`https://stride1-pet-shop-server.vercel.app/user/update/${params.id}`)
       },
     ],
   },
@@ -82,7 +82,7 @@ export const router = createBrowserRouter([
       {
         path: "manageFeature",
         element: <PrivateRoute><ManageAllfeature /></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/pets'),
+        loader: () => fetch('https://stride1-pet-shop-server.vercel.app/pets'),
       },
       {
         path: "addFeature",
@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
       {
         path: "editFeatures/:id",
         element: <PrivateRoute><EditFeatures /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/pets/single/${params.id}`)
+        loader: ({ params }) => fetch(`https://stride1-pet-shop-server.vercel.app/pets/single/${params.id}`)
       },
       //   {
       //     path: "updateUser/:id",

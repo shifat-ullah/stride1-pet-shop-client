@@ -4,7 +4,7 @@ import Activities from "./Activities";
 
 const About = () => {
   return (
-   <div>
+   <div className="pt-10">
     <AboutUs></AboutUs>
     <Activities></Activities>
    </div>

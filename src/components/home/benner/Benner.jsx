@@ -22,7 +22,7 @@ const Benner = () => {
   // };
 
   return (
-    <div className="relative  flex items-center justify-center   bg-gray-50">
+    <div className="relative pt-10 flex items-center justify-center   bg-gray-50">
       <div className="relative w-full max-h-screen">
         <img src={banner} alt="Pet Shop" className="w-full max-h-screen object-cover" />
         <div className="absolute mt-5 inset-0 lg:pl-14 flex flex-col justify-center items-start p-10 bg-opacity-50">

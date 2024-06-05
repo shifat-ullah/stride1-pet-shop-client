@@ -9,7 +9,7 @@ const Profile = () => {
 
     const [userInfo, setUserInfo] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${user?.email}`)
+        fetch(`https://stride1-pet-shop-server.vercel.app/user/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data)
@@ -17,7 +17,7 @@ const Profile = () => {
     }, [user])
     console.log(userInfo)
     return (
-        <div className="flex p-10 gap-10">
+        <div className="flex pt-32 p-10 gap-10">
             <img className="rounded-full w-[300px] h-[300px] " src={userInfo.photo} alt="" />
             <div className=" ">
                 <h1 className="text-4xl font-bold">{userInfo.name}</h1>

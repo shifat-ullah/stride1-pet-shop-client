@@ -7,7 +7,7 @@ const Feature = () => {
     const [pets, setPets]=useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/pets')
+        fetch('https://stride1-pet-shop-server.vercel.app/pets')
         .then(res=>res.json())
         .then(data=>{
             setPets(data)
@@ -16,7 +16,7 @@ const Feature = () => {
 
     console.log(pets)
     return (
-        <div className=" mt-20 mb-16 lg:w-[1200px] mx-auto ">
+        <div className="  pt-32 mb-16 lg:w-[1200px] mx-auto ">
             <h1 className="text-4xl mb-3 mx-auto font-bold w-[450px] italic rounded text-center">------Our Features-----</h1>
 
             <div className="grid mt-16 lg:ml-0 ml-12  mx-auto gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">

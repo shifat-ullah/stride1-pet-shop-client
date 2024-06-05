@@ -29,7 +29,7 @@ const EditFeatures = () => {
             image
         };
 
-        fetch(`http://localhost:5000/pets/${updatePets._id}`, {
+        fetch(`https://stride1-pet-shop-server.vercel.app/pets/${updatePets._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

@@ -26,7 +26,7 @@ const UpdateProfile = () => {
                 
 
             }
-           fetch(`http://localhost:5000/user/${updatedUser.email}`,{
+           fetch(`https://stride1-pet-shop-server.vercel.app/user/${updatedUser.email}`,{
             method:'PATCH',
             headers:{
                 'content-type':'application/json',

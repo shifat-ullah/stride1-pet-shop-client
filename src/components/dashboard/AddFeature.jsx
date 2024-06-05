@@ -23,7 +23,7 @@ const AddFeature = () => {
         };
        
 
-        fetch('http://localhost:5000/pets',{
+        fetch('https://stride1-pet-shop-server.vercel.app/pets',{
             method:'POST',
             headers:{
               'content-type':'application/json',

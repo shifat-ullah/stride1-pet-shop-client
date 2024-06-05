@@ -6,7 +6,7 @@ const DashboardHome = () => {
     const [charts, setCharts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/pets')
+        fetch('https://stride1-pet-shop-server.vercel.app/pets')
             .then(res => res.json())
             .then(data => {
                 setCharts(data);
