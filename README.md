@@ -40,4 +40,4 @@ express js
 mongodb
 And Also Used Many Other Awesome Npm Packages
 
-live link : https://stride1-pet-shop-client.vercel.app/
+live link :https://stride1-pet-shop-client.vercel.app/
