@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../assets/pet shop/logo.png';

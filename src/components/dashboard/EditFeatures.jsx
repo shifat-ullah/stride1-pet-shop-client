@@ -1,50 +1,52 @@
 
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 
 const EditFeatures = () => {
 
     const token = localStorage.getItem("token")
-    const updatePets=useLoaderData()
-    console.log(updatePets)
+    const updatePets = useLoaderData()
+    const navigate = useNavigate();
+    const location = useLocation()
+
+    const from = location?.state?.from.pathname || '/dashboard/manageFeature'
 
     const handleUpdatePet = async (e) => {
         e.preventDefault();
-    
+
         const form = e.target;
-    
         const title = form.title.value;
         const price = form.price.value;
         const category = form.category.value;
         const description = form.description.value;
         const image = form.image.value;
         const petsData = {
-          title,
-          price,
-          category,
-          description,
-          image
+            title,
+            price,
+            category,
+            description,
+            image
         };
-    
-       fetch(`http://localhost:5000/pets/${updatePets._id}`, {
-        method:'PATCH',
-        headers:{
-            'content-type':'application/json',
-            authorization:`Bearer ${token}`
 
-        },
-        body:JSON.stringify(petsData)
-       })
-       .then(res=> res.json())
-       .then(data=>{
-        toast.success('Successfully updated data')
-        console.log(data)
-       })
-      };
+        fetch(`http://localhost:5000/pets/${updatePets._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${token}`
+
+            },
+            body: JSON.stringify(petsData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Successfully updated data')
+                navigate(from, { replace: true })
+            })
+    };
     return (
         <div>
-            <form onSubmit={handleUpdatePet }  className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form onSubmit={handleUpdatePet} className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
                         Title

@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
       {
         path: "editFeatures/:id",
         element: <PrivateRoute><EditFeatures /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/pets/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/pets/single/${params.id}`)
       },
       //   {
       //     path: "updateUser/:id",

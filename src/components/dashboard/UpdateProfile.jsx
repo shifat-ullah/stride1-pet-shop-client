@@ -1,8 +1,13 @@
-import { useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 
 const UpdateProfile = () => {
     const token = localStorage.getItem("token")
+    const navigate = useNavigate();
+    const location = useLocation()
+
+    const from = location?.state?.from.pathname || '/profile'
     const updatedUser= useLoaderData();
     console.log(updatedUser)
     const handleSubmit = e => {
@@ -32,7 +37,9 @@ const UpdateProfile = () => {
            })
            .then(res=>res.json())
            .then(data=>{
-            console.log(data)
+            toast.success('successfully Update Your Profile Info')
+            navigate(from, {replace:true})
+            // console.log(data)
            })
     }
     return (
