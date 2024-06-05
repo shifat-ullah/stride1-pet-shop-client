@@ -16,14 +16,14 @@ const UpdateProfile = () => {
         const name = form.name.value;
         const age = form.age.value;
         const number = form.number.value;
+        const newPassword =form.newPassword.value;
        
 
             const userUpdateInfo={
                 name,
                 email: updatedUser?.email,
                 age,
-                number,
-                
+                number,   
 
             }
            fetch(`https://stride1-pet-shop-server.vercel.app/user/${updatedUser.email}`,{
@@ -43,7 +43,7 @@ const UpdateProfile = () => {
            })
     }
     return (
-        <form onSubmit={handleSubmit}  className="max-w-md mt-20 mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form onSubmit={handleSubmit}  className="max-w-md pt-32 mx-auto bg-white shadow-md rounded px-8  pb-8 mb-4">
             <div className="mb-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
                     name
@@ -96,6 +96,20 @@ const UpdateProfile = () => {
                     type="number"
                     placeholder="Enter Age"
                     name="age"
+                    required
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+                    Password
+                </label>
+                <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="password"
+                    type="Password"
+                    placeholder="Enter new password"
+                    name="newPassword"
+                    
                     required
                 />
             </div>

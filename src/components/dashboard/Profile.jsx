@@ -21,15 +21,26 @@ const Profile = () => {
             <img className="rounded-full w-[300px] h-[300px] " src={userInfo.photo} alt="" />
             <div className=" ">
                 <h1 className="text-4xl font-bold">{userInfo.name}</h1>
-                <Link to={`/updateProfile/${userInfo._id}`}>
-                    <button
+                <div className=" flex gap-6">
+                    <Link to={`/updateProfile/${userInfo._id}`}>
+                        <button
 
-                        className="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
-                    >
-                        <FaEdit className="mr-2" />
-                        Edit
-                    </button>
-                </Link>
+                            className="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                        >
+                            <FaEdit className="mr-2" />
+                            Edit
+                        </button>
+                    </Link>
+                    <Link to={`/update-pass`}>
+                        <button
+
+                            className="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                        >
+                            <FaEdit className="mr-2" />
+                            Update password
+                        </button>
+                    </Link>
+                </div>
                 <p className="text-2xl mt-5 font-semibold">{userInfo.email}</p>
                 <p className="text-2xl mt-5 font-semibold">AGE : {userInfo.age}</p>
                 <p className="text-2xl mt-5 font-semibold">Phone number : {userInfo.number}</p>

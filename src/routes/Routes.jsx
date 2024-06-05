@@ -19,6 +19,7 @@ import PetDetails from "../components/feature/PetDetails";
 import About from "../components/home/about/About";
 import Feature from "../components/feature/Feature";
 import Contact from "../components/home/contact/Contact";
+import { UpdatePass } from "../components/dashboard/UpdatePass";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/update-pass",
+        element: <UpdatePass />,
       },
       {
         path: "/Profile",
