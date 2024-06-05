@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import toast from "react-hot-toast";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
@@ -16,7 +17,7 @@ const UpdateProfile = () => {
         const name = form.name.value;
         const age = form.age.value;
         const number = form.number.value;
-        const newPassword =form.newPassword.value;
+        
        
 
             const userUpdateInfo={

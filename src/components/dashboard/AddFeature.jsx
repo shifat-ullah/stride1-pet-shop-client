@@ -1,7 +1,12 @@
 import toast from "react-hot-toast";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const AddFeature = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state.from.pathname || '/dashboard/manageFeature'
 
   const token = localStorage.getItem("token")
     const handleSubmit = (e) => {
@@ -35,6 +40,7 @@ const AddFeature = () => {
         .then(res=>res.json())
         .then(data=>{
             toast.success('Feature added successfully')
+            navigate(from, {replace:true})
             console.log(data)
         })
       };
