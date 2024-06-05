@@ -1,0 +1,13 @@
+.dashboard-container {
+    background-color: #f9fafb; /* Set the background color */
+    padding: 20px;
+}
+
+.charts-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chart {
+    margin: 10px;
+}

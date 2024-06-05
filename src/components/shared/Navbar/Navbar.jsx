@@ -24,7 +24,7 @@ const Navbar = () => {
     
 
     return (
-        <div className="bg-base-100 shadow-md">
+        <div className="bg-base-100 fixed z-10 w-full shadow-md">
             <div className="lg:w-[1250px] flex justify-between mx-auto navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -56,7 +56,7 @@ const Navbar = () => {
                 <div className="navbar-end flex gap-3 items-center">
                     {user ? (
                         <>
-                            <NavLink to='/dashboard' className="text-xl btn btn-sm btn-outline btn-primary transition-transform transform hover:scale-110">Dashboard</NavLink>
+                            <NavLink to='/dashboard' className="text-xl lg:block hidden btn btn-sm btn-outline btn-primary transition-transform transform hover:scale-110">Dashboard</NavLink>
                             <div onClick={handleSignOut} className="text-xl btn btn-sm btn-outline btn-danger transition-transform transform hover:scale-110">Logout</div>
                         </>
                     ) : (
@@ -81,6 +81,11 @@ const Navbar = () => {
                                 <li className="bg-slate-100 p-2">
                                     <NavLink to='/profile' activeClassName="text-blue-600">Profile</NavLink>
                                 </li>
+                                <li className="bg-slate-100 p-2">
+                                    <NavLink to='/dashboard' activeClassName="text-blue-600">Dashboard</NavLink>
+                                </li>
+{/* 
+                                <NavLink to='/dashboard' className="text-xl block lg:hidden btn btn-sm btn-outline btn-primary transition-transform transform hover:scale-110">Dashboard</NavLink> */}
                             </ul>
                         )}
                     </div>
