@@ -6,7 +6,7 @@ const AddFeature = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state.from.pathname || '/dashboard/manageFeature'
+  const from = location?.state?.from?.pathname || '/dashboard/manageFeature'
 
   const token = localStorage.getItem("token")
     const handleSubmit = (e) => {
